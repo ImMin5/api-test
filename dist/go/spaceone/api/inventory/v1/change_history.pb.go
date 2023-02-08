@@ -4,15 +4,15 @@
 // 	protoc        v3.20.1
 // source: spaceone/api/inventory/v1/change_history.proto
 
-package v1
+package main
 
 import (
+	v1 "github.com/Immin5/api-test/dist/go/spaceone/api/core/v1"
 	_struct "github.com/golang/protobuf/ptypes/struct"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
-	v1 "github.com/cloudforet-io/api/dist/go/spaceone/api/core/v1"
 	sync "sync"
 )
 

@@ -1,4 +1,4 @@
-module github.com/immin5/api-test
+module github.com/immin5/api-test/dist/go/spaceone/api
 
 go 1.19
 

@@ -13,9 +13,9 @@ import (
 	"io"
 	"net/http"
 
+	extV1 "github.com/Immin5/api-test/dist/go/spaceone/api/board/v1"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/utilities"
-	extV1 "github.com/immin5/api-test/dist/go/spaceone/api/board/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/grpclog"

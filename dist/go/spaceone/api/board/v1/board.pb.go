@@ -10,7 +10,7 @@
 package v1
 
 import (
-	v1 "github.com/Immin5/api-test/dist/go/spaceone/api/core/v1"
+	v1 "github.com/ImMin5/api-test/dist/go/spaceone/api/core/v1"
 	empty "github.com/golang/protobuf/ptypes/empty"
 	_struct "github.com/golang/protobuf/ptypes/struct"
 	_ "google.golang.org/genproto/googleapis/api/annotations"

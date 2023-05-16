@@ -10,7 +10,9 @@ package v1
 
 import (
 	"context"
-	extV1 "github.com/ImMin5/api-test/dist/go/spaceone/api/board/v1"
+	"io"
+	"net/http"
+
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/utilities"
 	"google.golang.org/grpc"
@@ -19,8 +21,6 @@ import (
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
-	"io"
-	"net/http"
 )
 
 // Suppress "imported and not used" errors
@@ -31,8 +31,8 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 var _ = metadata.Join
 
-func request_Board_Create_0(ctx context.Context, marshaler runtime.Marshaler, client extV1.BoardClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.CreateBoardRequest
+func request_Board_Create_0(ctx context.Context, marshaler runtime.Marshaler, client BoardClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq CreateBoardRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -48,8 +48,8 @@ func request_Board_Create_0(ctx context.Context, marshaler runtime.Marshaler, cl
 
 }
 
-func local_request_Board_Create_0(ctx context.Context, marshaler runtime.Marshaler, server extV1.BoardServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.CreateBoardRequest
+func local_request_Board_Create_0(ctx context.Context, marshaler runtime.Marshaler, server BoardServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq CreateBoardRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -65,8 +65,8 @@ func local_request_Board_Create_0(ctx context.Context, marshaler runtime.Marshal
 
 }
 
-func request_Board_Update_0(ctx context.Context, marshaler runtime.Marshaler, client extV1.BoardClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.UpdateBoardRequest
+func request_Board_Update_0(ctx context.Context, marshaler runtime.Marshaler, client BoardClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq UpdateBoardRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -82,8 +82,8 @@ func request_Board_Update_0(ctx context.Context, marshaler runtime.Marshaler, cl
 
 }
 
-func local_request_Board_Update_0(ctx context.Context, marshaler runtime.Marshaler, server extV1.BoardServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.UpdateBoardRequest
+func local_request_Board_Update_0(ctx context.Context, marshaler runtime.Marshaler, server BoardServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq UpdateBoardRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -99,8 +99,8 @@ func local_request_Board_Update_0(ctx context.Context, marshaler runtime.Marshal
 
 }
 
-func request_Board_SetCategories_0(ctx context.Context, marshaler runtime.Marshaler, client extV1.BoardClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.SetBoardCategoriesRequest
+func request_Board_SetCategories_0(ctx context.Context, marshaler runtime.Marshaler, client BoardClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq SetBoardCategoriesRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -116,8 +116,8 @@ func request_Board_SetCategories_0(ctx context.Context, marshaler runtime.Marsha
 
 }
 
-func local_request_Board_SetCategories_0(ctx context.Context, marshaler runtime.Marshaler, server extV1.BoardServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.SetBoardCategoriesRequest
+func local_request_Board_SetCategories_0(ctx context.Context, marshaler runtime.Marshaler, server BoardServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq SetBoardCategoriesRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -133,8 +133,8 @@ func local_request_Board_SetCategories_0(ctx context.Context, marshaler runtime.
 
 }
 
-func request_Board_Delete_0(ctx context.Context, marshaler runtime.Marshaler, client extV1.BoardClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.BoardRequest
+func request_Board_Delete_0(ctx context.Context, marshaler runtime.Marshaler, client BoardClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq BoardRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -150,8 +150,8 @@ func request_Board_Delete_0(ctx context.Context, marshaler runtime.Marshaler, cl
 
 }
 
-func local_request_Board_Delete_0(ctx context.Context, marshaler runtime.Marshaler, server extV1.BoardServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.BoardRequest
+func local_request_Board_Delete_0(ctx context.Context, marshaler runtime.Marshaler, server BoardServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq BoardRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -167,8 +167,8 @@ func local_request_Board_Delete_0(ctx context.Context, marshaler runtime.Marshal
 
 }
 
-func request_Board_Get_0(ctx context.Context, marshaler runtime.Marshaler, client extV1.BoardClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.GetBoardRequest
+func request_Board_Get_0(ctx context.Context, marshaler runtime.Marshaler, client BoardClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetBoardRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -184,8 +184,8 @@ func request_Board_Get_0(ctx context.Context, marshaler runtime.Marshaler, clien
 
 }
 
-func local_request_Board_Get_0(ctx context.Context, marshaler runtime.Marshaler, server extV1.BoardServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.GetBoardRequest
+func local_request_Board_Get_0(ctx context.Context, marshaler runtime.Marshaler, server BoardServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetBoardRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -201,8 +201,8 @@ func local_request_Board_Get_0(ctx context.Context, marshaler runtime.Marshaler,
 
 }
 
-func request_Board_List_0(ctx context.Context, marshaler runtime.Marshaler, client extV1.BoardClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.BoardQuery
+func request_Board_List_0(ctx context.Context, marshaler runtime.Marshaler, client BoardClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq BoardQuery
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -218,8 +218,8 @@ func request_Board_List_0(ctx context.Context, marshaler runtime.Marshaler, clie
 
 }
 
-func local_request_Board_List_0(ctx context.Context, marshaler runtime.Marshaler, server extV1.BoardServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.BoardQuery
+func local_request_Board_List_0(ctx context.Context, marshaler runtime.Marshaler, server BoardServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq BoardQuery
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -235,8 +235,8 @@ func local_request_Board_List_0(ctx context.Context, marshaler runtime.Marshaler
 
 }
 
-func request_Board_Stat_0(ctx context.Context, marshaler runtime.Marshaler, client extV1.BoardClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.BoardStatQuery
+func request_Board_Stat_0(ctx context.Context, marshaler runtime.Marshaler, client BoardClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq BoardStatQuery
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -252,8 +252,8 @@ func request_Board_Stat_0(ctx context.Context, marshaler runtime.Marshaler, clie
 
 }
 
-func local_request_Board_Stat_0(ctx context.Context, marshaler runtime.Marshaler, server extV1.BoardServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.BoardStatQuery
+func local_request_Board_Stat_0(ctx context.Context, marshaler runtime.Marshaler, server BoardServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq BoardStatQuery
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -273,7 +273,7 @@ func local_request_Board_Stat_0(ctx context.Context, marshaler runtime.Marshaler
 // UnaryRPC     :call BoardServer directly.
 // StreamingRPC :currently unsupported pending https://github.com/grpc/grpc-go/issues/906.
 // Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterBoardHandlerFromEndpoint instead.
-func RegisterBoardHandlerServer(ctx context.Context, mux *runtime.ServeMux, server extV1.BoardServer) error {
+func RegisterBoardHandlerServer(ctx context.Context, mux *runtime.ServeMux, server BoardServer) error {
 
 	mux.Handle("POST", pattern_Board_Create_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
@@ -481,15 +481,15 @@ func RegisterBoardHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux
 // RegisterBoardHandler registers the http handlers for service Board to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
 func RegisterBoardHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-	return RegisterBoardHandlerClient(ctx, mux, extV1.NewBoardClient(conn))
+	return RegisterBoardHandlerClient(ctx, mux, NewBoardClient(conn))
 }
 
 // RegisterBoardHandlerClient registers the http handlers for service Board
-// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "extV1.BoardClient".
-// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "extV1.BoardClient"
+// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "BoardClient".
+// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "BoardClient"
 // doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
-// "extV1.BoardClient" to call the correct interceptors.
-func RegisterBoardHandlerClient(ctx context.Context, mux *runtime.ServeMux, client extV1.BoardClient) error {
+// "BoardClient" to call the correct interceptors.
+func RegisterBoardHandlerClient(ctx context.Context, mux *runtime.ServeMux, client BoardClient) error {
 
 	mux.Handle("POST", pattern_Board_Create_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())

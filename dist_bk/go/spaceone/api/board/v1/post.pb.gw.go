@@ -13,7 +13,6 @@ import (
 	"io"
 	"net/http"
 
-	extV1 "github.com/ImMin5/api-test/dist/go/spaceone/api/board/v1"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/utilities"
 	"google.golang.org/grpc"
@@ -36,8 +35,8 @@ var (
 	filter_Post_Create_0 = &utilities.DoubleArray{Encoding: map[string]int{"board_id": 0, "boardId": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
-func request_Post_Create_0(ctx context.Context, marshaler runtime.Marshaler, client extV1.PostClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.CreatePostRequest
+func request_Post_Create_0(ctx context.Context, marshaler runtime.Marshaler, client PostClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq CreatePostRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -69,8 +68,8 @@ func request_Post_Create_0(ctx context.Context, marshaler runtime.Marshaler, cli
 
 }
 
-func local_request_Post_Create_0(ctx context.Context, marshaler runtime.Marshaler, server extV1.PostServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.CreatePostRequest
+func local_request_Post_Create_0(ctx context.Context, marshaler runtime.Marshaler, server PostServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq CreatePostRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -106,8 +105,8 @@ var (
 	filter_Post_Update_0 = &utilities.DoubleArray{Encoding: map[string]int{"board_id": 0, "boardId": 1, "post_id": 2, "postId": 3}, Base: []int{1, 1, 2, 3, 4, 0, 0, 0, 0}, Check: []int{0, 1, 1, 1, 1, 2, 3, 4, 5}}
 )
 
-func request_Post_Update_0(ctx context.Context, marshaler runtime.Marshaler, client extV1.PostClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.UpdatePostRequest
+func request_Post_Update_0(ctx context.Context, marshaler runtime.Marshaler, client PostClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq UpdatePostRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -149,8 +148,8 @@ func request_Post_Update_0(ctx context.Context, marshaler runtime.Marshaler, cli
 
 }
 
-func local_request_Post_Update_0(ctx context.Context, marshaler runtime.Marshaler, server extV1.PostServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.UpdatePostRequest
+func local_request_Post_Update_0(ctx context.Context, marshaler runtime.Marshaler, server PostServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq UpdatePostRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -196,8 +195,8 @@ var (
 	filter_Post_SendNotification_0 = &utilities.DoubleArray{Encoding: map[string]int{"board_id": 0, "boardId": 1, "post_id": 2, "postId": 3}, Base: []int{1, 1, 2, 3, 4, 0, 0, 0, 0}, Check: []int{0, 1, 1, 1, 1, 2, 3, 4, 5}}
 )
 
-func request_Post_SendNotification_0(ctx context.Context, marshaler runtime.Marshaler, client extV1.PostClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.SendNotificationRequest
+func request_Post_SendNotification_0(ctx context.Context, marshaler runtime.Marshaler, client PostClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq SendNotificationRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -239,8 +238,8 @@ func request_Post_SendNotification_0(ctx context.Context, marshaler runtime.Mars
 
 }
 
-func local_request_Post_SendNotification_0(ctx context.Context, marshaler runtime.Marshaler, server extV1.PostServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.SendNotificationRequest
+func local_request_Post_SendNotification_0(ctx context.Context, marshaler runtime.Marshaler, server PostServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq SendNotificationRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -286,8 +285,8 @@ var (
 	filter_Post_Delete_0 = &utilities.DoubleArray{Encoding: map[string]int{"board_id": 0, "boardId": 1, "post_id": 2, "postId": 3}, Base: []int{1, 1, 2, 3, 4, 0, 0, 0, 0}, Check: []int{0, 1, 1, 1, 1, 2, 3, 4, 5}}
 )
 
-func request_Post_Delete_0(ctx context.Context, marshaler runtime.Marshaler, client extV1.PostClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.PostRequest
+func request_Post_Delete_0(ctx context.Context, marshaler runtime.Marshaler, client PostClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PostRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -329,8 +328,8 @@ func request_Post_Delete_0(ctx context.Context, marshaler runtime.Marshaler, cli
 
 }
 
-func local_request_Post_Delete_0(ctx context.Context, marshaler runtime.Marshaler, server extV1.PostServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.PostRequest
+func local_request_Post_Delete_0(ctx context.Context, marshaler runtime.Marshaler, server PostServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PostRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -376,8 +375,8 @@ var (
 	filter_Post_Get_0 = &utilities.DoubleArray{Encoding: map[string]int{"board_id": 0, "boardId": 1, "post_id": 2, "postId": 3}, Base: []int{1, 1, 2, 3, 4, 0, 0, 0, 0}, Check: []int{0, 1, 1, 1, 1, 2, 3, 4, 5}}
 )
 
-func request_Post_Get_0(ctx context.Context, marshaler runtime.Marshaler, client extV1.PostClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.GetPostRequest
+func request_Post_Get_0(ctx context.Context, marshaler runtime.Marshaler, client PostClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetPostRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -419,8 +418,8 @@ func request_Post_Get_0(ctx context.Context, marshaler runtime.Marshaler, client
 
 }
 
-func local_request_Post_Get_0(ctx context.Context, marshaler runtime.Marshaler, server extV1.PostServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.GetPostRequest
+func local_request_Post_Get_0(ctx context.Context, marshaler runtime.Marshaler, server PostServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetPostRequest
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -466,8 +465,8 @@ var (
 	filter_Post_List_0 = &utilities.DoubleArray{Encoding: map[string]int{"board_id": 0, "boardId": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
-func request_Post_List_0(ctx context.Context, marshaler runtime.Marshaler, client extV1.PostClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.PostQuery
+func request_Post_List_0(ctx context.Context, marshaler runtime.Marshaler, client PostClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PostQuery
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -499,8 +498,8 @@ func request_Post_List_0(ctx context.Context, marshaler runtime.Marshaler, clien
 
 }
 
-func local_request_Post_List_0(ctx context.Context, marshaler runtime.Marshaler, server extV1.PostServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.PostQuery
+func local_request_Post_List_0(ctx context.Context, marshaler runtime.Marshaler, server PostServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PostQuery
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -536,8 +535,8 @@ var (
 	filter_Post_List_1 = &utilities.DoubleArray{Encoding: map[string]int{"board_id": 0, "boardId": 1}, Base: []int{1, 1, 2, 0, 0}, Check: []int{0, 1, 1, 2, 3}}
 )
 
-func request_Post_List_1(ctx context.Context, marshaler runtime.Marshaler, client extV1.PostClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.PostQuery
+func request_Post_List_1(ctx context.Context, marshaler runtime.Marshaler, client PostClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PostQuery
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -569,8 +568,8 @@ func request_Post_List_1(ctx context.Context, marshaler runtime.Marshaler, clien
 
 }
 
-func local_request_Post_List_1(ctx context.Context, marshaler runtime.Marshaler, server extV1.PostServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.PostQuery
+func local_request_Post_List_1(ctx context.Context, marshaler runtime.Marshaler, server PostServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PostQuery
 	var metadata runtime.ServerMetadata
 
 	var (
@@ -606,8 +605,8 @@ var (
 	filter_Post_Stat_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
 )
 
-func request_Post_Stat_0(ctx context.Context, marshaler runtime.Marshaler, client extV1.PostClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.PostStatQuery
+func request_Post_Stat_0(ctx context.Context, marshaler runtime.Marshaler, client PostClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PostStatQuery
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
@@ -622,8 +621,8 @@ func request_Post_Stat_0(ctx context.Context, marshaler runtime.Marshaler, clien
 
 }
 
-func local_request_Post_Stat_0(ctx context.Context, marshaler runtime.Marshaler, server extV1.PostServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq extV1.PostStatQuery
+func local_request_Post_Stat_0(ctx context.Context, marshaler runtime.Marshaler, server PostServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq PostStatQuery
 	var metadata runtime.ServerMetadata
 
 	if err := req.ParseForm(); err != nil {
@@ -642,7 +641,7 @@ func local_request_Post_Stat_0(ctx context.Context, marshaler runtime.Marshaler,
 // UnaryRPC     :call PostServer directly.
 // StreamingRPC :currently unsupported pending https://github.com/grpc/grpc-go/issues/906.
 // Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterPostHandlerFromEndpoint instead.
-func RegisterPostHandlerServer(ctx context.Context, mux *runtime.ServeMux, server extV1.PostServer) error {
+func RegisterPostHandlerServer(ctx context.Context, mux *runtime.ServeMux, server PostServer) error {
 
 	mux.Handle("POST", pattern_Post_Create_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
@@ -875,15 +874,15 @@ func RegisterPostHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux,
 // RegisterPostHandler registers the http handlers for service Post to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
 func RegisterPostHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-	return RegisterPostHandlerClient(ctx, mux, extV1.NewPostClient(conn))
+	return RegisterPostHandlerClient(ctx, mux, NewPostClient(conn))
 }
 
 // RegisterPostHandlerClient registers the http handlers for service Post
-// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "extV1.PostClient".
-// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "extV1.PostClient"
+// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "PostClient".
+// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "PostClient"
 // doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
-// "extV1.PostClient" to call the correct interceptors.
-func RegisterPostHandlerClient(ctx context.Context, mux *runtime.ServeMux, client extV1.PostClient) error {
+// "PostClient" to call the correct interceptors.
+func RegisterPostHandlerClient(ctx context.Context, mux *runtime.ServeMux, client PostClient) error {
 
 	mux.Handle("POST", pattern_Post_Create_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())

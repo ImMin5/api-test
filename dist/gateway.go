@@ -12,7 +12,7 @@ import (
 	"net/http"
 	"strings"
 
-	inventorygw "github.com/ImMin5/api-test/gateway/spaceone/api/inventory/v1" // Update
+	inventorygw "github.com/ImMin5/api-test/dist/gateway/spaceone/api/inventory/v1" // Update
 )
 
 func CustomMatcher(key string) (string, bool) {

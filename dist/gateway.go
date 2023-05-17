@@ -4,7 +4,6 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"github.com/golang/glog"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -64,7 +63,7 @@ func makeMetadata(ctx context.Context, req *http.Request) metadata.MD {
 	return metadata.Pairs("token", token)
 }
 
-func run() error {
+func Run() error {
 	ctx := context.Background()
 	ctx, cancel := context.WithCancel(ctx)
 	defer cancel() // end of main run function cancel() will be executed
@@ -92,11 +91,11 @@ func run() error {
 	return http.ListenAndServe("localhost:8084", mux)
 }
 
-func main() {
-	flag.Parse()
-	defer glog.Flush()
-
-	if err := run(); err != nil {
-		glog.Fatal(err)
-	}
-}
+//func main() {
+//	flag.Parse()
+//	defer glog.Flush()
+//
+//	if err := run(); err != nil {
+//		glog.Fatal(err)
+//	}
+//}

@@ -1,0 +1,166 @@
+syntax = "proto3";
+
+package spaceone.api.identity.v1;
+
+option go_package = "github.com/cloudforet-io/api/dist/go/spaceone/api/identity/v1";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+import "google/api/annotations.proto";
+import "spaceone/api/core/v1/query.proto";
+import "spaceone/api/core/v1/handler.proto";
+
+
+service Domain {
+    rpc create (CreateDomainRequest) returns (DomainInfo) {}
+    rpc update (UpdateDomainRequest) returns (DomainInfo) {
+        option (google.api.http) = {
+            post: "/identity/v1/domain/update"
+            body: "*"
+        };
+    }
+    rpc change_auth_plugin (ChangeAuthRequest) returns (DomainInfo) {
+        option (google.api.http) = {
+            post: "/identity/v1/domain/change-auth-plugin"
+            body: "*"
+        };
+    }
+    rpc update_plugin (UpdatePluginRequest) returns (DomainInfo) {
+        option (google.api.http) = {
+            post: "/identity/v1/domain/update-plugin"
+            body: "*"
+        };
+    }
+    rpc verify_plugin (DomainRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            post: "/identity/v1/domain/verify-plugin"
+            body: "*"
+        };
+    }
+    rpc delete (DomainRequest) returns (google.protobuf.Empty) {}
+    rpc enable (DomainRequest) returns (DomainInfo) {}
+    rpc disable (DomainRequest) returns (DomainInfo) {}
+    rpc get (GetDomainRequest) returns (DomainInfo) {
+        option (google.api.http) = {
+            post: "/identity/v1/domain/get"
+            body: "*"
+        };
+    }
+    rpc list (DomainQuery) returns (DomainsInfo) {}
+    rpc stat (DomainStatQuery) returns (google.protobuf.Struct) {}
+    rpc get_public_key (spaceone.api.core.v1.AuthenticationRequest)
+        returns (spaceone.api.core.v1.AuthenticationResponse) {}
+}
+
+message CreateDomainRequest {
+    string name = 1;
+    // +optional
+    PluginInfo plugin_info = 2;
+    // +optional
+    google.protobuf.Struct config = 3;
+    // +optional
+    google.protobuf.Struct tags = 4;
+}
+
+message UpdateDomainRequest {
+    string domain_id = 1;
+    // +optional
+    PluginInfo plugin_info = 2;
+    // +optional
+    google.protobuf.Struct config = 3;
+    // +optional
+    google.protobuf.Struct tags = 4;
+}
+
+message ChangeAuthRequest {
+    string domain_id = 1;
+    // +optional
+    PluginInfo plugin_info = 2;
+    // +optional
+    bool release_auth_plugin = 3;
+}
+
+message UpdatePluginRequest {
+    enum UpgradeMode {
+        NONE = 0;
+        MANUAL = 1;
+        AUTO = 2;
+    }
+
+    string domain_id = 1;
+    // +optional
+    string version = 2;
+    // +optional
+    google.protobuf.Struct options = 3;
+    // +optional
+    UpgradeMode upgrade_mode = 4;
+}
+
+message DomainRequest {
+    string domain_id = 1;
+}
+
+message GetDomainRequest {
+    string domain_id = 1;
+    // +optional
+    repeated string only = 2;
+}
+
+message DomainQuery {
+    enum State {
+        NONE = 0;
+        ENABLED = 1;
+        DISABLED = 2;
+    }
+    // +optional
+    spaceone.api.core.v1.Query query = 1;
+    // +optional
+    string domain_id = 2;
+    // +optional
+    string name = 3;
+    // +optional
+    State state = 4;
+}
+
+message DomainInfo {
+    enum State {
+        NONE = 0;
+        ENABLED = 1;
+        DISABLED = 2;
+    }
+
+    string domain_id = 1;
+    string name = 2;
+    State state = 3;
+    PluginInfo plugin_info = 4;
+    google.protobuf.Struct config = 5;
+    google.protobuf.Struct tags = 6;
+    string created_at = 7;
+    string deleted_at = 8;
+}
+
+message DomainsInfo {
+    repeated DomainInfo results = 1;
+    int32 total_count = 2;
+}
+
+message DomainStatQuery {
+    spaceone.api.core.v1.StatisticsQuery query = 1;
+}
+
+message PluginInfo {
+    enum UpgradeMode {
+        NONE = 0;
+        MANUAL = 1;
+        AUTO = 2;
+    }
+
+    string plugin_id = 1;
+    string version = 2;
+    string secret_id = 3;
+    google.protobuf.Struct options = 4;
+    google.protobuf.Struct secret_data = 5;
+    string schema_id = 6;
+    google.protobuf.Struct metadata = 7;
+    UpgradeMode upgrade_mode = 8;
+}

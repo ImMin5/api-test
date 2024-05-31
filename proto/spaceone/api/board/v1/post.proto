@@ -1,0 +1,249 @@
+//A Post is a message published on a Board. It also provides notifications to Projects affected by the Post.
+syntax = "proto3";
+
+package spaceone.api.board.v1;
+
+option go_package = "github.com/cloudforet-io/api/dist/go/spaceone/api/board/v1";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+import "google/api/annotations.proto";
+import "spaceone/api/core/v2/query.proto";
+
+service Post {
+
+    //Creates a new Post under a specific Board. You must specify the `board_id`, `title`, and `contents`. The parameter `category` is not required but can be set in the scope of `categories` specified in the parent Board. You can make the new Post pinned or pop up by adjusting the parameters.
+    rpc create (CreatePostRequest) returns (PostInfo) {
+        option (google.api.http) = {
+            post: "/board/v1/post/create"
+            body: "*"
+        };
+    }
+
+    //Updates a specific Post. You can make changes in Post settings, except `board_id`, `post_id`, and `domain_id`.
+    rpc update (UpdatePostRequest) returns (PostInfo) {
+        option (google.api.http) = {
+            post: "/board/v1/post/update"
+            body: "*"
+        };
+    }
+
+    //Not Implemented
+    rpc send_notification (PostRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            post: "/board/v1/post/send-notification"
+            body: "*"
+        };
+    }
+
+    // Deletes a specific Post. You must specify the `post_id` of the Post to delete, and the `board_id` of the Board where the child Post to delete belongs.
+    rpc delete (PostRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            post: "/board/v1/post/delete"
+            body: "*"
+        };
+    }
+
+    // Gets a specific Post. You must specify the `post_id` of the Post to get, and the `board_id` of the Board where the child Post to get belongs. Prints detailed information about the Post.
+    rpc get (PostRequest) returns (PostInfo) {
+        option (google.api.http) = {
+            post: "/board/v1/post/get"
+            body: "*"
+        };
+    }
+
+    // Gets a list of all Posts. You can use a query to get a filtered list of Posts.
+    rpc list (PostSearchQuery) returns (PostsInfo) {
+        option (google.api.http) = {
+            post: "/board/v1/post/list"
+            body: "*"
+        };
+    }
+
+    rpc stat (PostStatQuery) returns (google.protobuf.Struct) {
+        option (google.api.http) = {
+            post: "/board/v1/post/stat"
+            body: "*"
+        };
+    }
+}
+
+//{
+//    "board_type": "NOTICE",
+//    "category": "developer",
+//    "title": "title",
+//    "contents": "This is contents.",
+//    "files": ["file-123456789012"],
+//    "options": {"is_popup": true},
+//    "writer": "user1",
+//    "resource_group": "DOMAIN",
+//}
+message CreatePostRequest {
+    enum ResourceGroup {
+        RESOURCE_GROUP_NONE = 0;
+        SYSTEM = 1;
+        DOMAIN = 2;
+    }
+
+    string board_type = 1;
+    string title = 2;
+    string contents = 3;
+    // +optional
+    string category = 4;
+    // +optional
+    repeated string files = 5;
+    // +optional
+    google.protobuf.Struct options = 6;
+    // +optional
+    string writer = 7;
+    ResourceGroup resource_group = 20;
+}
+
+//{
+//      "post_id": "post-2118473ce15e",
+//      "title": "title2",
+//      "contents": "this is contents2.",
+//      "category": "developer",
+//      "options": {
+//          "is_popup": false,
+//          "is_pinned": true
+//      },
+//      "writer": "user1"
+//}
+message UpdatePostRequest {
+    string post_id = 1;
+    // +optional
+    string title = 2;
+    // +optional
+    string contents = 3;
+    // +optional
+    string category = 4;
+    // +optional
+    repeated string files = 5;
+    // +optional
+    google.protobuf.Struct options = 6;
+    // +optional
+    string writer = 7;
+}
+
+//{
+//    "post_id": "post-2118473ce15e"
+//}
+message PostRequest {
+    string post_id = 1;
+}
+
+//{
+//    "query": {}
+//}
+message PostSearchQuery {
+    // +optional
+    spaceone.api.core.v2.Query query = 1;
+    // +optional
+    string board_type = 2;
+    // +optional
+    string post_id = 3;
+    // +optional
+    string category = 4;
+    // +optional
+    string writer = 5;
+    // +optional
+    bool is_pinned = 6;
+    // +optional
+    bool is_popup = 7;
+    // +optional
+    string domain_id = 21;
+}
+
+message PostStatQuery {
+    spaceone.api.core.v2.StatisticsQuery query = 1;
+}
+
+//{
+//          "board_type": "NOTICE",
+//          "post_id": "post-123456789012",
+//          "category": "developer",
+//          "title": "title",
+//          "contents": "This is contents.",
+//          "options": {
+//              "is_pinned": false,
+//              "is_popup": true
+//          },
+//          "view_count": 0,
+//          "writer": "user1",
+//          "resource_group": "DOMAIN",
+//          "domain_id": "domain-123456789012",
+//          "user_id": "user1@email.com",
+//          "created_at": "2022-01-01T01:06:23.732Z",
+//          "updated_at": "2022-01-01T01:06:23.732Z"
+//}
+message PostInfo {
+    enum ResourceGroup {
+        RESOURCE_GROUP_NONE = 0;
+        SYSTEM = 1;
+        DOMAIN = 2;
+    }
+
+    string board_type = 1;
+    string post_id = 2;
+    string category = 3;
+    string title = 4;
+    string contents = 5;
+    google.protobuf.Struct options = 6;
+    int32 view_count = 7;
+    string writer = 8;
+    google.protobuf.ListValue files = 9;
+
+    ResourceGroup resource_group = 20;
+    string domain_id = 21;
+    string user_id = 22;
+
+    string created_at = 31;
+    string updated_at = 32;
+}
+
+//{
+//      "results": [
+//          {
+//              "board_id": "board-b9aa34e65c60",
+//              "post_id": "post-2118473ce15e",
+//              "category": "spaceone",
+//              "title": "title2",
+//              "contents": "this is contents2.",
+//              "options": {
+//                  "is_popup": false,
+//                  "is_pinned": true
+//              },
+//              "view_count": 3,
+//              "writer": "seolmin2",
+//              "files": ["file-123456789012"],
+//              "resource_group": "DOMAIN",
+//              "domain_id": "domain-58010aa2e451",
+//              "user_id": "user1@email.com",
+//              "created_at": "2022-06-13T01:06:23.732Z",
+//              "updated_at": "2022-06-13T01:06:23.732Z"
+//          },
+//          {
+//              "board_id": "board-b9aa34e65c60",
+//              "post_id": "post-532ae1191233",
+//              "category": "flower",
+//              "title": "작업공지",
+//              "contents": "This is description",
+//              "options": {
+//                  "is_pinned": true,
+//                  "is_popup": true
+//              },
+//              "writer": "권설민",
+//              "files": ["file-123456789022"],
+//              "resource_group": "DOMAIN",
+//              "user_id": "supervisor",
+//              "created_at": "2022-06-10T07:01:44.384Z",
+//              "updated_at": "2022-06-10T07:01:44.384Z"
+//          }
+//      ],
+//      "total_count": 2
+//}
+message PostsInfo {
+    repeated PostInfo results = 1;
+    int32 total_count = 2;
+}

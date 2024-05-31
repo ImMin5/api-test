@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package spaceone.api.sample.v1;
+
+option go_package = "github.com/cloudforet-io/api/dist/go/spaceone/api/sample/v1";
+
+// The greeting service definition.
+service HelloWorld {
+  // Sends a greeting
+  rpc say_hello (HelloRequest) returns (HelloReply) {}
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+  string message = 1;
+}

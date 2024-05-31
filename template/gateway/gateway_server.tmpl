@@ -1,0 +1,48 @@
+package api
+
+import (
+	"context"
+{%- for service in services %}
+    {{ version}}{{service | replace('_',' ') | title | replace(' ', '')  }} "github.com/cloudforet-io/api/dist/gateway/{{project}}/api/{{ service }}/{{ version }}"
+{%- endfor %}
+    "github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
+    "google.golang.org/grpc"
+    "log"
+    "reflect"
+)
+
+func RegisterServiceHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, grpcServerEndpoint string, opts []grpc.DialOption, service string) {
+	serviceFuncMap := map[string]interface{}{
+    {%- for service in services %}
+        "{{ service }}":register{{ service | replace('_', ' ') | title | replace(' ','') }},
+    {%- endfor %}
+	}
+
+    // Init log format
+	log.SetFlags(log.LstdFlags | log.Lshortfile)
+
+	if serviceFuncMap[service] == nil {
+		log.Panic("[ERROR] ", service, " service is not exist")
+	}
+
+	serviceFunc := serviceFuncMap[service]
+	funcValue := reflect.ValueOf(serviceFunc)
+	args := []reflect.Value{reflect.ValueOf(ctx), reflect.ValueOf(mux), reflect.ValueOf(grpcServerEndpoint), reflect.ValueOf(opts)}
+	funcValue.Call(args)
+}
+
+{% for service in services %}
+func register{{ service | replace('_', ' ') | title | replace(' ','') }} (ctx context.Context, mux *runtime.ServeMux, grpcServerEndpoint string, opts []grpc.DialOption) {
+	for _, f := range []func(context.Context, *runtime.ServeMux, string, []grpc.DialOption) error{
+	{%- for handler in handlers[service] %}
+	    {{ version}}{{service | replace('_',' ') | title | replace(' ', '')  }}.{{ handler}},
+    {%- endfor %}
+	} {
+		if err := f(ctx, mux, grpcServerEndpoint, opts); err != nil {
+			log.Print("[{{service}}Register] Register {{service}} service failed because of ", err)
+		}
+	}
+
+	log.Println("[INFO] [{{service}}Register] Register {{service}} service success")
+}
+{% endfor %}

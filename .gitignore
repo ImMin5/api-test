@@ -1,4 +1,6 @@
-dist_bk
-dist/main_bkk.go
-dist/python
+*.swp
+*.bak
 .idea
+.DS_Store
+__pycache__
+venv
